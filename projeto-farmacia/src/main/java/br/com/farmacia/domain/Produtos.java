@@ -13,7 +13,7 @@ public class Produtos {
 	public Long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(Long codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 	public String getDescricao() {
@@ -25,7 +25,7 @@ public class Produtos {
 	public Long getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(Long quantidade) {
+	public void setQuantidade(long quantidade) {
 		this.quantidade = quantidade;
 	}
 	public Double getPreco() {
