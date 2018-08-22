@@ -4,9 +4,9 @@ public class Produtos {
 	
 	private Long codigo;
 	private String descricao;
-	private Long quantidade;
+	private long quantidade;
 	private Double preco;
-	private Fornecedores fornecedor;
+	private Fornecedores fornecedor = new Fornecedores();
 	
 	
 	
@@ -22,7 +22,7 @@ public class Produtos {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Long getQuantidade() {
+	public long getQuantidade() {
 		return quantidade;
 	}
 	public void setQuantidade(long quantidade) {

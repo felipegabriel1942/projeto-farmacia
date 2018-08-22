@@ -14,8 +14,7 @@
 	<ui:define name="conteudo">
 		<!-- TABELA DE DADOS -->
 		<h:form id="frmFornecedores">
-			<p:dataTable id="tbFornecedores"
-				widgetVar="tabelaFornecedores"
+			<p:dataTable id="tbFornecedores" widgetVar="tabelaFornecedores"
 				emptyMessage="Nenhum registro encontrado"
 				value="#{fornecedorBean.itens}" var="item" paginator="true" rows="8"
 				filteredValue="#{fornecedorBean.itensFiltrados}">
@@ -65,15 +64,16 @@
 			header="Cadastrar Fornecedor" modal="true" appendTo="@(body)">
 			<h:form id="frmFormularioNovo">
 				<h:panelGrid columns="2" id="pnFormularioNovo">
-					<p:outputLabel value="Descrição: " />
+					<p:outputLabel value="Descrição: " for="txtDescNovo" />
 					<h:inputText size="30" maxlength="50"
-						value="#{fornecedorBean.fornecedores.descricao}" />
+						value="#{fornecedorBean.fornecedores.descricao}" id="txtDescNovo"
+						required="true" requiredMessage="O campo descrição é obrigatorio" />
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
 					<p:commandButton value="Gravar"
 						actionListener="#{fornecedorBean.novoCadastro}"
-						oncomplete="PF('dlgFornecedorNovo').hide(); PF('tabelaFornecedores').clearFilters();"
+						oncomplete="verificar(xhr, status, args, 'dlgFornecedorNovo', 'tabelaFornecedores');"
 						update=":frmFornecedores:tbFornecedores  :msgGlobal" />
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgFornecedorNovo').hide();" />
@@ -116,14 +116,16 @@
 					<h:outputText value="Código" />
 					<h:outputText value="#{fornecedorBean.fornecedores.codigo}" />
 
-					<h:outputText value="Descrição" />
-					<h:inputText value="#{fornecedorBean.fornecedores.descricao}" />
+					<h:outputText value="Descrição:" for="txtEdtFor" />
+					<h:inputText value="#{fornecedorBean.fornecedores.descricao}"
+						required="true" requiredMessage="O campo descrição e requerido"
+						id="txtEdtFor" />
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
 					<p:commandButton value="Editar"
 						actionListener="#{fornecedorBean.editar}"
-						oncomplete="PF('dlgFornecedorEditar').hide(); PF('tabelaFornecedores').clearFilters();"
+						oncomplete="verificar(xhr, status, args, 'dlgFornecedorEditar', 'tabelaFornecedores');"
 						update=":frmFornecedores:tbFornecedores  :msgGlobal" />
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgFornecedorEditar').hide();" />
